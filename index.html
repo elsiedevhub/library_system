@@ -11,38 +11,44 @@
   <!-- Header -->
   <div class="p-6 text-center">
     <h1 class="text-4xl font-bold text-indigo-700">BrightReads Library</h1>
-    <p class="text-gray-600 mt-2">Organize, explore, and manage your personal collection with color and ease!</p>
+    <p class="text-gray-600 mt-2">Manage, edit, borrow, and organize your books effortlessly!</p>
     <div class="mt-4">
       <label for="colorPicker" class="font-medium">Choose Layout Color:</label>
       <input type="color" id="colorPicker" class="ml-2 border rounded" />
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Form and Table Side-by-Side -->
   <div class="flex justify-center px-6 mt-8 space-x-10 flex-wrap">
 
     <!-- Form Section -->
     <div class="bg-white p-6 rounded shadow-md w-96">
-      <h2 class="text-xl font-semibold mb-4">Add a Book</h2>
+      <h2 class="text-xl font-semibold mb-4" id="formTitle">Add a Book</h2>
       <form id="bookForm" class="space-y-4">
         <div>
-          <label for="title" class="block font-medium">Title:</label>
+          <label class="block font-medium">Title:</label>
           <input type="text" id="title" required class="w-full border rounded px-2 py-1" />
         </div>
         <div>
-          <label for="author" class="block font-medium">Author:</label>
+          <label class="block font-medium">Author:</label>
           <input type="text" id="author" required class="w-full border rounded px-2 py-1" />
         </div>
         <div>
-          <label for="date" class="block font-medium">Date of Collection:</label>
+          <label class="block font-medium">Date of Collection:</label>
           <input type="date" id="date" required class="w-full border rounded px-2 py-1" />
         </div>
-        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Submit</button>
+        <div id="borrowerSection" class="hidden">
+          <label class="block font-medium">Borrower Name:</label>
+          <input type="text" id="borrower" class="w-full border rounded px-2 py-1" />
+          <label class="block font-medium mt-2">Borrowed Time:</label>
+          <input type="time" id="borrowTime" class="w-full border rounded px-2 py-1" />
+        </div>
+        <button type="submit" id="submitBtn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Submit</button>
       </form>
     </div>
 
     <!-- Table Section -->
-    <div class="overflow-x-auto w-full max-w-3xl">
+    <div class="overflow-x-auto max-w-3xl">
       <table class="min-w-full bg-white rounded shadow-md">
         <thead class="bg-indigo-200">
           <tr>
@@ -50,15 +56,17 @@
             <th class="py-2 px-4 text-left">Author</th>
             <th class="py-2 px-4 text-left">Date</th>
             <th class="py-2 px-4 text-left">Status</th>
+            <th class="py-2 px-4 text-left">Borrower</th>
             <th class="py-2 px-4 text-left">Action</th>
           </tr>
         </thead>
         <tbody id="bookTable" class="text-gray-700"></tbody>
       </table>
     </div>
+
   </div>
 
-  <!-- JavaScript File -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
